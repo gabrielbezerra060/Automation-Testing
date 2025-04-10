@@ -1,0 +1,21 @@
+Test types: 
+    -E2E: No e2e tests needed, only api's and unit tests can ensure everything is ok w/ this service
+    -Integration: 
+        Focused on testing the service through API's
+    -Contract testing:
+        The firt scenario of each spec has more assertions on purpose. It's not only to validate it has data, 
+        it ensures that all the fields were fetched; 
+    -Unit:
+        They were done at an API level, however mainly the error scenarios can run as unit tests, to test not valid 
+        or missing inputs for example;
+
+Test cases:
+    They're written in Gherkin language above each .it block of testing;
+    They cover different combination of inputs, missing inputs and forced error scenarios
+
+Cypress: I've chosen cypress to do it because I have more experience w/ it. However, for api testing it's possible to create 
+postman collections and run the job in a pipe w/ Newman, it's a good approach too.
+
+Github link: https://github.com/gabrielbezerra060/Automation-Testing
+
+
