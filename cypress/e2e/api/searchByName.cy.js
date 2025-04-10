@@ -10,19 +10,23 @@ describe('Successfull scenarios', () => {
     //Then I should be able to see it w/ all its information
 
     it('Get food truck by name', () => {
-      const foodTruckName = foodTrucks[0].__select_alias1__
+      const foodTruck = foodTrucks[0]
 
-      cy.api_searchByName(foodTruckName).then(response => {
+      cy.api_searchByName(foodTruck.__select_alias1__).then(response => {
         expect(response.status).to.be.equal(200);
         expect(response).to.have.property('headers')
-        expect(response.headers)
-        .to.have
-        .property('content-type', 'application/json; charset=utf-8')
-
-        expect(response.body[0]).to.have.property('applicant', foodTruckName);
+        expect(response.headers).to.have.property('content-type', 'application/json; charset=utf-8')
+        expect(response.body[0]).to.have.property('address');
+        expect(response.body[0]).to.have.property('applicant', foodTruck.__select_alias1__);
+        expect(response.body[0]).to.have.property('facilityType', foodTruck.__select_alias2__);
+        expect(response.body[0]).to.have.property('foodItems', foodTruck.__select_alias11__);
+        expect(response.body[0]).to.have.property('id');
+        expect(response.body[0]).to.have.property('latitude');
+        expect(response.body[0]).to.have.property('longitude');
+        expect(response.body[0]).to.have.property('status');
       })
-    })
-
+    });
+    
     // 2 - Test a not existent food truck
 
     //Given I access sfgov site
@@ -43,7 +47,7 @@ describe('Successfull scenarios', () => {
 
         expect(response.body).to.be.empty;
       })
-    })
+    });
 
     // 3 - Test multi results query 
 
@@ -70,8 +74,8 @@ describe('Successfull scenarios', () => {
           cy.log("habemus pizza")
         })
       })
-    })
-  })
+    });
+});
 
     
 describe("Error scenarios", () => {
@@ -95,10 +99,9 @@ describe("Error scenarios", () => {
       expect(response.body).to.have.property('title');
       expect(response.body.title).to.be.equal(title)
     })
-  })
+  });
 
-
-  // 4 - Test an invalid status and correct name
+  // 5 - Test an invalid status and correct name
 
   //Given I request a food truck by name
   //And I pass a wrong status 
@@ -118,5 +121,5 @@ describe("Error scenarios", () => {
 
       expect(response.body).to.be.empty;
     })
-  })
-})
+  });
+});

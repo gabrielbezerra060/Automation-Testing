@@ -1,1 +1,0 @@
-// Zeroed lat and long

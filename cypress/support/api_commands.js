@@ -9,13 +9,24 @@ Cypress.Commands.add("api_searchByName", (foodTruckName, foodTruckstatus)  => {
     })
 })
 
-
-
 Cypress.Commands.add("api_searchByStreet", (street)  => {
     cy.request({
         url: `/api/mobilefoodtrucks/searchByStreet`,
         qs: {
             street: street
-        }
+        },
+        failOnStatusCode: false
+    })
+})
+
+Cypress.Commands.add("api_nearestFoodTrucks", (lat, long, stts)  => {
+    cy.request({
+        url: `/api/mobilefoodtrucks/nearestFoodTrucks`,
+        qs: {
+            latitude: lat,
+            longitude: long,
+            status: stts
+        },
+        failOnStatusCode: false
     })
 })
