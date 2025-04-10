@@ -16,8 +16,8 @@ Make sure you have installed:
    git clone <repo-url>
    cd <repo-name>
 
-Installing dependencies
-3. npm install cypress
+## Installing dependencies
+npm install cypress
 
-To run the tests
-4. npx cypress open or npx cypress run for headless mode
+## To run the tests
+npx cypress open or npx cypress run for headless mode
